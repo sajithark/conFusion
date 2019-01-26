@@ -8,8 +8,8 @@ import { Dish } from '../shared/dish';
 })
 export class DishDetailComponent implements OnInit {
 
-    @Input()
-    showDish: Dish;
+  @Input()
+  showDish: Dish;
     
   constructor() { }
 
