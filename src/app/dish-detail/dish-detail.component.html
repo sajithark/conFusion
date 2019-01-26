@@ -6,16 +6,16 @@
     fxLayoutGap="10px" 
     fxLayoutGap.xs="0">
 
-  <div fxFlex="40" *ngIf="oneDish">
+  <div fxFlex="40" *ngIf="showDish">
     <mat-card>
       <mat-card-header>
         <mat-card-title>
-          <h3>{{oneDish.name | uppercase}}</h3>
+          <h3>{{showDish.name | uppercase}}</h3>
         </mat-card-title>
       </mat-card-header>
-      <img mat-card-image src={{oneDish.image}} alt={{oneDish.name}}>
+      <img mat-card-image src={{showDish.image}} alt={{showDish.name}}>
       <mat-card-content>
-        <p>{{oneDish.description}}</p>
+        <p>{{showDish.description}}</p>
       </mat-card-content>
       <mat-card-actions>
         <button mat-button>LIKE</button>
@@ -25,9 +25,9 @@
   </div>
 
   <div fxFlex="40" >
-    <mat-list fxFlex *ngIf="oneDish">
+    <mat-list fxFlex *ngIf="showDish">
       <h3>Comments</h3>
-      <mat-list-item *ngFor="let commentDesc of oneDish.comments">
+      <mat-list-item *ngFor="let commentDesc of showDish.comments">
         <h1 matLine>{{commentDesc.comment}}</h1>
         <p matLine>
           <span>{{commentDesc.rating}} stars</span>
