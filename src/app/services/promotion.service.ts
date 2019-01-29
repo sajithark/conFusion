@@ -14,12 +14,10 @@ export class PromotionService {
   }
 
   getPromotion(id: string): Promotion {
-    return PROMOTIONS.filter((promo) => {promo.id === id})[0];
-    // return PROMOTIONS[0];
+    return PROMOTIONS.filter((promo) => (promo.id === id))[0];
   }
 
   getFeaturedPromotion(): Promotion {
     return PROMOTIONS.filter((promo) => promo.featured)[0];
-    // return PROMOTIONS[0];
   }
 }
