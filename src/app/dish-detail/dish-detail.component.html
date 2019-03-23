@@ -39,4 +39,9 @@
       </mat-list-item>
     </mat-list>
   </div>
+
+  <div [hidden]="showDish">
+    <mat-spinner></mat-spinner>
+    <h4>Loading.. Please wait</h4>
+  </div>
 </div>
