@@ -22,6 +22,8 @@ export class DishDetailComponent implements OnInit {
   commentForm : FormGroup;
   comment_obj : Comment;
 
+  errorMessage : string;  
+
   formError = {
     'author' : '',
     'comment' : '',
@@ -58,8 +60,9 @@ export class DishDetailComponent implements OnInit {
       .pipe(switchMap((params: Params) => this.dishService.getDish(params['id'])))
       .subscribe(showDish => {
           this.showDish = showDish;
-          this.setPrevNext(showDish.id);
-    });
+          this.setPrevNext(showDish.id);},
+      errorMessage => this.errorMessage = <any>errorMessage
+    );
   }
 
   setPrevNext(dishId : string) {
