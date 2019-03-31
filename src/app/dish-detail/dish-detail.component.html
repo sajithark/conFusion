@@ -13,7 +13,7 @@
           <h3>{{showDish.name | uppercase}}</h3>
         </mat-card-title>
       </mat-card-header>
-      <img mat-card-image src={{showDish.image}} alt={{showDish.name}}>
+      <img mat-card-image src="{{BaseURL + showDish.image}}" alt={{showDish.name}}>
       <mat-card-content>
         <p>{{showDish.description}}</p>
       </mat-card-content>
@@ -31,7 +31,7 @@
     </mat-card>
   </div>
 
-  <div fxFlex="40" *ngIf="showDish" >
+  <div *ngIf="showDish" >
     <mat-list fxFlex>
       <h3>Comments</h3>
       <mat-list-item *ngFor="let commentDesc of showDish.comments">
