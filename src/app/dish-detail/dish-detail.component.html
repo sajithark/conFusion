@@ -31,7 +31,7 @@
     </mat-card>
   </div>
 
-  <div *ngIf="showDish" >
+  <div fxFlex="40" *ngIf="showDish" >
     <mat-list fxFlex>
       <h3>Comments</h3>
       <mat-list-item *ngFor="let commentDesc of showDish.comments">
@@ -52,9 +52,7 @@
           <span>-- {{commentForm.value.author}}</span>
         </p>
       </mat-list-item>
-    </mat-list>
-  </div>
-  <div class="form-size">
+      <p></p>
       <form novalidate [formGroup]="commentForm" (ngSubmit)="onSubmit()" #fform="ngForm">
         <p>
           <mat-form-field class="half-width">
@@ -69,7 +67,7 @@
         </p>
         <p>
           <mat-form-field class="full-width">
-            <textarea matInput formControlName="comment" placeholder="Your comment!" rows=12 required></textarea>
+            <textarea matInput formControlName="comment" placeholder="Your comment!" rows= required></textarea>
             <mat-error  *ngIf="formError.comment">
                 {{formError.comment}}
             </mat-error>
@@ -77,6 +75,7 @@
         </p>
         <button type="submit" mat-button class="background-primary text-floral-white" [disabled]="commentForm.invalid">Submit</button>
       </form>
+    </mat-list>
   </div>
   <div [hidden]="showDish || errorMessage">
     <mat-spinner></mat-spinner>

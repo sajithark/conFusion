@@ -100,6 +100,6 @@ export class ContactComponent implements OnInit {
       message : '',
       agree : false,
     });
-    this.feedbackFormDirective.reset();
+    this.feedbackFormDirective.resetForm();
   }
 }
