@@ -33,6 +33,7 @@ import { LoginComponent } from './login/login.component';
 import { DishService } from './services/dish.service';
 import { PromotionService } from './services/promotion.service';
 import { LeaderService } from './services/leader.service';
+import { FeedbackService } from './services/feedback.service';
 import { ProcessHTTPRequestService } from './services/process-httprequest.service';
 
 import { baseURL } from './shared/baseurl';
@@ -79,6 +80,7 @@ import { HighlightDirective } from './directives/highlight.directive';
     DishService,
     PromotionService,
     LeaderService,
+    FeedbackService,
     ProcessHTTPRequestService,
     { provide: 'BaseURL', useValue: baseURL }
   ],

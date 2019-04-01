@@ -6,11 +6,17 @@ import { Dish } from '../shared/dish';
 import { DishService } from '../services/dish.service';
 import { switchMap } from 'rxjs/operators'; 
 import { Comment } from '../shared/comment';
+import { visibility, flyInOut, expand } from '../animations/app.animations';
 
 @Component({
   selector: 'app-dish-detail',
   templateUrl: './dish-detail.component.html',
-  styleUrls: ['./dish-detail.component.scss']
+  styleUrls: ['./dish-detail.component.scss'],
+  host: {
+    '[@flyInOut]': 'true',
+    'style': 'display: block;'
+  },
+  animations: [ visibility(), flyInOut(), expand() ]
 })
 export class DishDetailComponent implements OnInit {
 
@@ -23,7 +29,9 @@ export class DishDetailComponent implements OnInit {
   comment_obj : Comment;
   dishCopy : Dish;
 
-  errorMessage : string;  
+  errorMessage : string;
+
+  visibility = 'shown';
 
   formError = {
     'author' : '',
@@ -58,11 +66,14 @@ export class DishDetailComponent implements OnInit {
     this.dishService.getDishIds().
       subscribe((dishIds) => this.dishIds = dishIds);
     this.route.params
-      .pipe(switchMap((params: Params) => this.dishService.getDish(params['id'])))
+      .pipe(switchMap((params: Params) => { this.visibility = 'hidden'; return this.dishService.getDish(params['id']);
+    }))
       .subscribe(showDish => {
-          this.showDish = showDish;
-          this.dishCopy = showDish;
-          this.setPrevNext(showDish.id);},
+        this.showDish = showDish;
+        this.dishCopy = showDish;
+        this.setPrevNext(showDish.id);
+        this.visibility = 'shown';
+      },
       errorMessage => this.errorMessage = <any>errorMessage
     );
   }
